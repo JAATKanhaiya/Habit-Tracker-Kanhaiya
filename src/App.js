@@ -43,14 +43,6 @@ const categoryColors = {
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-function getWeekKey(offset = 0) {
-  const now = new Date();
-  const day = now.getDay();
-  const diff = now.getDate() - day + (day === 0 ? -6 : 1) + offset * 7;
-  const monday = new Date(now.setDate(diff));
-  return monday.toISOString().split("T")[0];
-}
-
 function getWeekDates(weekOffset = 0) {
   const base = new Date();
   const day = base.getDay();
@@ -71,7 +63,6 @@ export default function HabitTracker() {
 
   const weekDates = getWeekDates(weekOffset);
   const todayStr = new Date().toISOString().split("T")[0];
-  const todayIndex = weekDates.indexOf(todayStr);
 
   useEffect(() => {
     try {
